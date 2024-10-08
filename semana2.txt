@@ -1,0 +1,36 @@
+EJERCICIO 1:
+
+        select titulo, nombre
+        from libro l, escribe e, autor a
+        where l.isbn = e.isbn and e.cod_autor = a.codigo;
+
+EJERCICIO 2:
+	
+	select titulo, cod_suc from libro l, dispone d, sucursal s where d.cod_suc = s.codigo and l.isbn = d.isbn and poblacion in ('SALAMANCA');
+
+EJERCICIO 3:
+
+	select distinct titulo from libro l, prestamo p where l.isbn = p.isbn and cod_suc = 7 and fecha_dev is null;
+
+EJERCICIO 4:
+
+	select nombre, ape_1, titulo from libro l, prestamo p, lector h where p.cod_lector = h.Codigo and l.isbn = p.isbn and cod_suc = 7 and fecha_dev is null;
+	
+EJERCICIO 5:
+	select cod_suc, titulo, num_ejemplares from libro l, dispone d where l.isbn = d.isbn and num_ejemplares > 3 order by cod_suc;
+	
+EJERCICIO 6:
+	select a.nombre, apellido, n.nombre from autor a, nacionalidad n where a.cod_nacion = n.codigo and ano_fall < 1900;
+	
+EJERCICIO 7: 
+	select l.titulo, a.nombre, a.apellido from libro l, autor a, editorial h, escribe e where l.isbn = e.isbn and e.cod_autor = a.codigo and h.codigo = 5;
+
+EJERCICIO 8:
+	select p.Fecha_ini, l.titulo, h.ape_1 from libro l, prestamo p, lector h where l.isbn=p.isbn and ape_1='TRIGO' order by fecha_ini;
+
+EJERCICIO 9:
+	
+	select distinct s.poblacion, l.nombre, l.ape_1, l.ape_2 from sucursal s, lector l, prestamo p, dispone d where s.codigo = d.cod_suc and d.isbn=p.isbn and p.cod_lector=l.codigo and l.nombre='CARLOS' and l.ape_1='LOPEZ' and l.ape_2='CUADRADO';
+	
+EJERCICIO 20:
+	select distinct e.nombre,  a.nombre, a.apellido from editorial e, libro l, escribe h, autor a where e.codigo=l.cod_editorial and l.isbn=h.isbn and h.cod_autor=a.codigo and a.nombre='FEDERICO' and a.apellido='ANDAHAZI';
