@@ -1,0 +1,3 @@
+EJ2:
+
+	select titulo, cod_lector from (libro l join dispone d on l.isbn=d.isbn) join prestamo p on d.cod_suc = p.cod_suc and d.isbn=p.isbn where d.cod_suc=3 order by titulo;
